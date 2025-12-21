@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Giới thiệu - Góc Lập Trình</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#4f46e5', secondary: '#1e293b' },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+    <!-- HEADER -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="/home.html" class="text-2xl font-bold text-primary">Góc Lập Trình</a>
+            <nav class="hidden sm:flex gap-6 text-sm font-medium text-slate-700">
+                <a href="/home.html" class="hover:text-primary">Trang chủ</a>
+                <a href="/blog.html" class="hover:text-primary">Bài viết</a>
+                <a href="/about.html" class="text-primary font-semibold">Giới thiệu</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-white to-indigo-50 py-20 text-center border-b border-slate-200">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Giới thiệu</h1>
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+            Tìm hiểu về người sáng lập và hành trình phát triển của <span class="text-primary font-semibold">Góc Lập
+                Trình</span>.
+        </p>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div
+            class="bg-white rounded-3xl shadow-lg border border-slate-200 p-10 md:p-16 text-center relative overflow-hidden">
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2">
+            </div>
+
+            <div class="relative z-10">
+                <div
+                    class="w-96 h-96 mx-auto mb-8 rounded-full overflow-hidden shadow-lg border-4 border-white ring-4 ring-indigo-100">
+                    <img src="/avatar.jpg" alt="Nguyễn Khánh Long" class="w-full h-full object-cover">
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mb-1">Nguyễn Khánh Long</h2>
+                <p class="text-primary font-medium mb-1">Sinh viên ngành Công nghệ thông tin</p>
+                <p class="text-slate-600 mb-6">Trường Đại học Công Nghệ Thành phố Hồ Chí Minh (HUTECH)</p>
+
+                <p class="text-slate-700 text-lg leading-relaxed max-w-3xl mx-auto mb-12">
+                    Xin chào! Mình là Long – sinh viên Công nghệ thông tin với niềm đam mê lập trình và chia sẻ kiến
+                    thức.
+                    Mình tạo ra <span class="text-primary font-semibold">Góc Lập Trình</span> để chia sẻ những bài viết
+                    hữu ích,
+                    kinh nghiệm học tập, cũng như cập nhật xu hướng công nghệ mới nhất cho cộng đồng lập trình viên trẻ
+                    tại Việt Nam.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-8 text-slate-700">
+                    <div class="flex items-center gap-3 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 12H8m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                        <span><strong>Email:</strong>
+                            <a href="mailto:khanhlongn634@gmail.com" class="text-primary hover:underline">
+                                khanhlongn634@gmail.com
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-3 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5h2l3.6 7.59L5.25 18a1 1 0 001 1h12.5a1 1 0 001-1l-3.35-5.41L19 5H5" />
+                        </svg>
+                        <span><strong>SĐT:</strong>
+                            <a href="tel:0327980412" class="text-primary hover:underline">
+                                0327 980 412
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+        © 2025 Góc Lập Trình. Thiết kế bởi Nguyễn Khánh Long.
+    </footer>
+</body>
+
+</html>
