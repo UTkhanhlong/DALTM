@@ -4,76 +4,240 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Góc Lập Trình - Trang chủ</title>
+    <title>Góc Lập Trình - Tri thức & Hành trình</title>
     <meta name="description"
-        content="Nơi chia sẻ kiến thức lập trình, an ninh mạng và kinh nghiệm thực tế cho sinh viên.">
-    <meta property="og:title" content="Góc Lập Trình - Chia sẻ kiến thức công nghệ">
-    <meta property="og:description" content="Nơi học hỏi và thảo luận về lập trình, bảo mật hệ thống.">
+        content="Nơi chia sẻ kiến thức lập trình, an ninh mạng và nhật ký trưởng thành của sinh viên.">
+    <meta property="og:title" content="Góc Lập Trình - Senior Style Blog">
     <meta property="og:type" content="website">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { primary: '#4f46e5', accent: '#818cf8' },
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: { primary: '#6366f1', secondary: '#4338ca', accent: '#818cf8', glass: 'rgba(255, 255, 255, 0.7)' },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
                 },
             },
         };
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="data.js" defer></script>
-    <script defer>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (typeof posts === 'undefined' || !Array.isArray(posts) || posts.length === 0) {
-                document.getElementById("featured").innerHTML = '<p class="text-center text-slate-600">Chưa có bài viết nào.</p>';
-                document.getElementById("post-list").innerHTML = '<p class="text-center text-slate-600">Chưa có bài viết mới.</p>';
-                return;
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fcfcfd;
+        }
+
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+            background-color: #0f172a;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .premium-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+            border-color: #6366f1;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
             }
 
-            // Bài nổi bật (lớn hơn)
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+    <script src="data.js" defer></script>
+</head>
+
+<body class="text-slate-900 font-sans antialiased overflow-x-hidden">
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Góc
+                Lập Trình</a>
+            <nav class="hidden md:flex gap-10 text-sm font-bold text-slate-600 uppercase tracking-widest">
+                <a href="index.html"
+                    class="text-primary relative after:absolute after:-bottom-2 after:left-0 after:w-full after:h-0.5 after:bg-primary">Trang
+                    chủ</a>
+                <a href="blog.html" class="hover:text-primary transition">Bài viết</a>
+                <a href="diary.html" class="hover:text-primary transition">Nhật ký</a>
+                <a href="about.html" class="hover:text-primary transition">Giới thiệu</a>
+            </nav>
+            <button class="md:hidden text-slate-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-48 pb-32 overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute top-1/2 -left-24 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-float"
+            style="animation-delay: 2s"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <span
+                class="inline-block px-4 py-2 rounded-full bg-indigo-50 text-primary text-xs font-bold mb-8 tracking-widest uppercase">Chào
+                mừng bạn đến với thế giới của mình</span>
+            <h1 class="text-6xl md:text-8xl font-black text-slate-900 mb-8 leading-tight">
+                Tri thức phục vụ <br> <span class="text-gradient">Cộng đồng.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
+                Nơi một sinh viên xa nhà chia sẻ niềm đam mê <span
+                    class="text-slate-900 font-bold underline decoration-primary underline-offset-4">Cybersecurity</span>
+                và hành trình lập trình mỗi ngày.
+            </p>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <a href="blog.html"
+                    class="px-10 py-5 bg-slate-900 text-white rounded-full font-bold shadow-2xl hover:bg-primary transition-all hover:scale-105">Khám
+                    phá bài viết</a>
+                <a href="diary.html"
+                    class="px-10 py-5 bg-white border border-slate-200 text-slate-900 rounded-full font-bold hover:bg-slate-50 transition-all">Đọc
+                    nhật ký của mình</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED CONTENT -->
+    <section class="max-w-7xl mx-auto px-6 py-32">
+        <div class="flex items-end justify-between mb-16">
+            <div>
+                <h2 class="text-4xl font-black text-slate-900 mb-4">Bài viết nổi bật</h2>
+                <div class="w-20 h-1.5 bg-primary rounded-full"></div>
+            </div>
+            <a href="blog.html"
+                class="text-sm font-bold uppercase tracking-widest text-primary hover:gap-4 flex items-center gap-2 transition-all">Xem
+                tất cả <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg></a>
+        </div>
+        <div id="featured" class="grid grid-cols-1"></div>
+    </section>
+
+    <!-- LATEST FEED -->
+    <section class="bg-slate-50 py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-16">
+                <div>
+                    <h2 class="text-4xl font-black text-slate-900 mb-4">Mới cập nhật</h2>
+                    <div class="w-20 h-1.5 bg-purple-600 rounded-full"></div>
+                </div>
+            </div>
+            <div id="post-list" class="grid md:grid-cols-3 gap-10"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-start mb-20 border-b border-slate-800 pb-20">
+                <div>
+                    <h3 class="text-4xl font-black mb-6">Góc Lập Trình</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed max-w-md italic">
+                        "Mỗi dòng code là một bước chân hướng tới tương lai. Đừng bao giờ ngừng học hỏi, dù bạn đang ở
+                        đâu."
+                    </p>
+                </div>
+                <div class="flex gap-20">
+                    <div class="space-y-4">
+                        <p class="font-bold text-sm uppercase tracking-widest text-slate-500">Menu</p>
+                        <ul class="space-y-2 font-medium">
+                            <li><a href="blog.html" class="hover:text-primary transition">Bài viết</a></li>
+                            <li><a href="diary.html" class="hover:text-primary transition">Nhật ký</a></li>
+                            <li><a href="about.html" class="hover:text-primary transition">Giới thiệu</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 text-sm">
+                © 2025 Góc Lập Trình. Được thiết kế cực kỳ tâm huyết bởi Nguyễn Khánh Long.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof posts === 'undefined') return;
+
+            // FEATURED RENDER
             const featured = posts[0];
             document.getElementById("featured").innerHTML = `
-                <div class="relative bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 cursor-pointer" onclick="goToPost(${featured.id})">
-                    <img src="${featured.image}" alt="${featured.title}" class="w-full h-96 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                        <span class="text-sm font-medium bg-primary/80 px-3 py-1 rounded-full">${featured.category}</span>
-                        <h3 class="text-3xl md:text-4xl font-bold mt-4 mb-2">${featured.title}</h3>
-                        <p class="text-lg opacity-90 line-clamp-2">${featured.excerpt}</p>
-                        <div class="flex items-center gap-3 mt-6">
-                            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(featured.author)}&background=random" alt="${featured.author}" class="w-10 h-10 rounded-full">
-                            <div>
-                                <p class="font-medium">${featured.author}</p>
-                                <p class="text-sm opacity-80">${featured.date || 'Mới đây'}</p>
+                <div class="group relative bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer" onclick="goToPost(${featured.id})">
+                    <div class="grid md:grid-cols-2 items-center">
+                        <div class="overflow-hidden">
+                            <img src="${featured.image}" class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-12 md:p-20">
+                            <span class="inline-block px-4 py-1 rounded bg-indigo-50 text-primary text-xs font-black uppercase tracking-widest mb-6">${featured.category}</span>
+                            <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight group-hover:text-primary transition-colors">${featured.title}</h3>
+                            <p class="text-slate-500 text-lg mb-10 line-clamp-3">${featured.excerpt}</p>
+                            <div class="flex items-center gap-4">
+                                <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(featured.author)}&background=6366f1&color=fff" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <p class="font-black text-slate-900">${featured.author}</p>
+                                    <p class="text-sm text-slate-500">${featured.date}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
 
-            // Bài viết mới nhất (grid 3 cột)
-            const postList = document.getElementById("post-list");
-            postList.innerHTML = posts.slice(1, 7).map(post => `
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group" onclick="goToPost(${post.id})">
-                    <div class="overflow-hidden">
-                        <img src="${post.image}" alt="${post.title}" class="h-48 w-full object-cover group-hover:scale-110 transition-transform duration-500">
+            // GRID RENDER
+            const list = document.getElementById("post-list");
+            list.innerHTML = posts.slice(1, 7).map(post => `
+                <div class="premium-card rounded-[32px] p-4 group cursor-pointer" onclick="goToPost(${post.id})">
+                    <div class="rounded-[24px] overflow-hidden mb-8">
+                        <img src="${post.image}" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-medium text-primary bg-indigo-50 px-3 py-1 rounded-full">${post.category}</span>
-                        <h4 class="text-xl font-bold mt-4 mb-2 group-hover:text-primary transition-colors line-clamp-2">${post.title}</h4>
-                        <p class="text-slate-600 text-sm line-clamp-3">${post.excerpt}</p>
-                        <div class="flex items-center gap-3 mt-5 text-sm text-slate-500">
-                            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(post.author)}&background=random" alt="${post.author}" class="w-8 h-8 rounded-full">
-                            <span>${post.author}</span>
-                            <span>•</span>
-                            <span>${post.date || 'Mới đây'}</span>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-primary">${post.category}</span>
+                            <span class="text-[10px] font-bold text-slate-400">${post.date}</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-900 mb-4 group-hover:text-primary transition-colors line-clamp-2">${post.title}</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-6">${post.excerpt}</p>
+                        <div class="flex items-center gap-2 text-sm font-bold">
+                            <span>Đọc tiếp</span>
+                            <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </div>
                     </div>
                 </div>
@@ -81,80 +245,9 @@
         });
 
         function goToPost(id) {
-            const post = posts.find(p => p.id === id);
-            if (post) {
-                localStorage.setItem("selectedPost", JSON.stringify(post));
-            }
             window.location.href = `detail_blog.html?id=${id}`;
         }
     </script>
-</head>
-
-<body class="bg-slate-50 text-slate-900 font-sans antialiased">
-    <!-- HEADER -->
-    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold text-primary">Góc Lập Trình</a>
-            <nav class="hidden md:flex gap-10 text-base font-medium text-slate-700">
-                <a href="index.html"
-                    class="text-primary font-semibold relative after:absolute after:bottom- -2 after:left-0 after:w-full after:h-0.5 after:bg-primary">Trang
-                    chủ</a>
-                <a href="blog.html" class="hover:text-primary transition">Bài viết</a>
-                <a href="about.html" class="hover:text-primary transition">Giới thiệu</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-32 overflow-hidden">
-        <div class="absolute inset-0 bg-primary/5"></div>
-        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
-                Chào mừng đến với <span class="text-primary">Góc Lập Trình</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-10">
-                Nơi chia sẻ kiến thức lập trình, an ninh mạng, công nghệ mới và kinh nghiệm cho sinh viên và những người
-                mới bắt đầu.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="blog.html"
-                    class="inline-block bg-primary text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-primary/90 hover:scale-105 transition-all">
-                    Khám phá bài viết
-                </a>
-                <a href="about.html"
-                    class="inline-block border-2 border-primary text-primary px-8 py-4 rounded-full font-semibold hover:bg-primary hover:text-white transition-all">
-                    Giới thiệu về mình
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED POST -->
-    <section class="max-w-7xl mx-auto px-4 py-20">
-        <div class="flex items-center justify-between mb-10">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Bài viết nổi bật</h2>
-            <a href="blog.html" class="text-primary font-medium hover:underline">Xem tất cả →</a>
-        </div>
-        <div id="featured" class="grid grid-cols-1"></div>
-    </section>
-
-    <!-- LATEST POSTS -->
-    <section class="max-w-7xl mx-auto px-4 py-20 bg-slate-100/50">
-        <div class="flex items-center justify-between mb-10">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Bài viết mới nhất</h2>
-            <a href="blog.html" class="text-primary font-medium hover:underline">Xem tất cả →</a>
-        </div>
-        <div id="post-list" class="grid md:grid-cols-3 gap-8"></div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-300 py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-lg font-semibold mb-2">Góc Lập Trình</p>
-            <p class="text-sm mb-6">Chia sẻ kiến thức lập trình & an ninh mạng bằng tiếng Việt</p>
-            <p class="text-sm">© 2025 Góc Lập Trình. Thiết kế & phát triển bởi Nguyễn Khánh Long.</p>
-        </div>
-    </footer>
 </body>
 
 </html>

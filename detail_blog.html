@@ -6,176 +6,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bài viết - Góc Lập Trình</title>
     <meta name="description" content="Chia sẻ kiến thức lập trình, an ninh mạng và kinh nghiệm thực tế cho sinh viên.">
-    <meta property="og:title" content="Góc Lập Trình - Chia sẻ kiến thức công nghệ">
-    <meta property="og:description" content="Nơi học hỏi và thảo luận về lập trình, bảo mật hệ thống.">
-    <meta property="og:type" content="website">
-
-    <!-- Prism.js for Syntax Highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { primary: '#4f46e5', accent: '#818cf8' },
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-                    typography: {
-                        DEFAULT: {
-                            css: {
-                                maxWidth: 'none',
-                                color: '#1e293b',
-                                h1: { fontSize: '2.5rem', fontWeight: '800', color: '#0f172a', marginTop: '2rem', marginBottom: '1rem' },
-                                h2: { fontSize: '2rem', fontWeight: '700', color: '#0f172a', marginTop: '2rem', marginBottom: '1rem' },
-                                h3: { fontSize: '1.75rem', fontWeight: '700', color: '#0f172a', marginTop: '1.5rem', marginBottom: '1rem' },
-                                p: { lineHeight: '1.8', marginBottom: '1.25rem', fontSize: '1.125rem' },
-                                strong: { color: '#1e293b' },
-                                a: { color: '#4f46e5', fontWeight: '600', textDecoration: 'underline' },
-                                pre: {
-                                    backgroundColor: '#0f172a',
-                                    color: '#e2e8f0',
-                                    padding: '1.5rem',
-                                    borderRadius: '1rem',
-                                    overflowX: 'auto',
-                                    fontSize: '0.95rem',
-                                    marginTop: '1.5rem',
-                                    marginBottom: '1.5rem',
-                                },
-                                code: { backgroundColor: '#f1f5f9', padding: '0.2rem 0.4rem', borderRadius: '0.375rem', fontSize: '0.95rem' },
-                                'pre code': { backgroundColor: 'transparent', padding: 0 },
-                                blockquote: {
-                                    borderLeft: '4px solid #4f46e5',
-                                    paddingLeft: '1.5rem',
-                                    fontStyle: 'italic',
-                                    color: '#475569',
-                                    margin: '2rem 0',
-                                },
-                                ul: { listStyleType: 'disc', paddingLeft: '1.5rem', marginBottom: '1.25rem' },
-                                ol: { listStyleType: 'decimal', paddingLeft: '1.5rem', marginBottom: '1.25rem' },
-                                img: { borderRadius: '1rem', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)', margin: '2rem auto', display: 'block' },
-                                hr: { borderColor: '#e2e8f0', margin: '3rem 0' },
-                            },
-                        },
-                    },
+                    colors: { primary: '#6366f1', secondary: '#4338ca', accent: '#818cf8', glass: 'rgba(255, 255, 255, 0.7)' },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
                 },
             },
         };
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fcfcfd;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            width: 0%;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            z-index: 60;
+            transition: width 0.1s ease;
+        }
+
+        .prose h1,
+        .prose h2,
+        .prose h3 {
+            font-weight: 800;
+            color: #0f172a;
+            scroll-margin-top: 100px;
+        }
+
+        .prose pre {
+            position: relative;
+            background: #1e293b !important;
+            padding: 2rem !important;
+            border-radius: 20px !important;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .toc-item.active {
+            border-left: 2px solid #6366f1;
+            color: #6366f1;
+            padding-left: 1rem;
+        }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="data.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js" defer></script>
 </head>
 
-<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+<body class="text-slate-900 font-sans antialiased">
+    <div class="progress-bar" id="reading-progress"></div>
+
     <!-- HEADER -->
-    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold text-primary">Góc Lập Trình</a>
-            <nav class="hidden md:flex gap-10 text-base font-medium text-slate-700">
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Góc
+                Lập Trình</a>
+            <nav class="hidden md:flex gap-10 text-sm font-bold text-slate-600 uppercase tracking-widest">
                 <a href="index.html" class="hover:text-primary transition">Trang chủ</a>
-                <a href="blog.html"
-                    class="text-primary font-semibold relative after:absolute after:bottom- -2 after:left-0 after:w-full after:h-0.5 after:bg-primary">Bài
-                    viết</a>
+                <a href="blog.html" class="hover:text-primary transition">Bài viết</a>
+                <a href="diary.html" class="hover:text-primary transition">Nhật ký</a>
                 <a href="about.html" class="hover:text-primary transition">Giới thiệu</a>
             </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="max-w-4xl mx-auto px-4 py-16 md:py-24">
-        <article class="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <!-- Featured Image -->
-            <div id="featured-image" class="relative h-96 md:h-[500px] overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+    <!-- CONTENT -->
+    <main class="pt-40 pb-32 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <!-- Sidebar TOC -->
+        <aside class="hidden lg:block lg:col-span-3 sticky top-40 h-fit">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Mục lục nội dung</p>
+            <div id="toc" class="space-y-4 border-l border-slate-100">
+                <!-- TOC items will be injected here -->
+            </div>
+        </aside>
+
+        <!-- Article -->
+        <article class="lg:col-span-9">
+            <div id="post-header" class="mb-16"></div>
+
+            <div id="featured-image" class="w-full h-[500px] rounded-[40px] overflow-hidden mb-16 shadow-2xl relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
 
-            <!-- Post Content -->
-            <div class="px-8 md:px-16 py-12 md:py-16">
-                <div id="post-header" class="text-center mb-12"></div>
+            <div id="post-content" class="prose prose-lg max-w-none text-slate-700 leading-relaxed">
+                <!-- Content here -->
+            </div>
 
-                <!-- Article Body -->
-                <div id="post-content" class="prose prose-lg mx-auto typography"></div>
+            <hr class="my-20 border-slate-100">
 
-                <!-- Back Link -->
-                <div class="mt-20 pt-10 border-t border-slate-200 text-center">
-                    <a href="blog.html"
-                        class="inline-flex items-center gap-3 text-primary font-semibold text-lg hover:text-accent transition-colors group">
-                        <svg class="w-6 h-6 group-hover:-translate-x-1 transition-transform" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                        </svg>
-                        Quay lại danh sách bài viết
-                    </a>
-                </div>
+            <div class="bg-slate-50 rounded-[32px] p-10 text-center">
+                <h3 class="text-2xl font-black mb-4">Bạn thấy bài viết này thế nào?</h3>
+                <p class="text-slate-500 mb-8">Nếu có thắc mắc, đừng ngần ngại liên hệ với mình qua trang Giới thiệu
+                    nhé!</p>
+                <a href="blog.html"
+                    class="inline-flex items-center gap-2 font-bold text-primary hover:gap-4 transition-all">
+                    <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                    Quay lại danh sách bài viết
+                </a>
             </div>
         </article>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-300 py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-lg font-semibold mb-2">Góc Lập Trình</p>
-            <p class="text-sm mb-6">Chia sẻ kiến thức lập trình & an ninh mạng bằng tiếng Việt</p>
-            <p class="text-sm">© 2025 Góc Lập Trình. Thiết kế & phát triển bởi Nguyễn Khánh Long.</p>
-        </div>
+    <footer class="py-12 text-center text-slate-400 text-sm">
+        © 2025 Góc Lập Trình. Bài viết của Nguyễn Khánh Long.
     </footer>
 
-    <script>
+    <script shadow>
         document.addEventListener("DOMContentLoaded", () => {
-            // Lấy ID từ URL
             const urlParams = new URLSearchParams(window.location.search);
             const postId = parseInt(urlParams.get('id'));
 
-            // Tìm bài viết từ localStorage hoặc từ data.js
-            let post = JSON.parse(localStorage.getItem("selectedPost"));
-
-            if (!post || post.id !== postId) {
-                if (typeof posts !== 'undefined') {
-                    post = posts.find(p => p.id === postId);
-                }
-            }
+            const post = posts.find(p => p.id === postId);
 
             if (post) {
-                // Cập nhật title và meta
                 document.title = `${post.title} - Góc Lập Trình`;
 
-                // Header bài viết
                 document.getElementById("post-header").innerHTML = `
-                    <span class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full text-sm mb-6">${post.category}</span>
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">${post.title}</h1>
-                    <div class="flex items-center justify-center gap-4 mt-8 text-slate-600">
-                        <div class="flex items-center gap-2">
-                            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(post.author)}&background=random" alt="${post.author}" class="w-10 h-10 rounded-full">
-                            <span class="font-medium">${post.author}</span>
-                        </div>
-                        <span>•</span>
-                        <span>${post.date || 'Mới đây'}</span>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="px-3 py-1 bg-indigo-50 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">${post.category}</span>
+                        <span class="text-slate-300">•</span>
+                        <span class="text-slate-400 text-xs font-bold">${post.date}</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-black text-slate-900 leading-tight mb-8">${post.title}</h1>
+                    <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(post.author)}&background=6366f1&color=fff" class="w-10 h-10 rounded-full">
+                        <span class="font-bold text-slate-600">${post.author}</span>
                     </div>
                 `;
 
-                // Ảnh nổi bật
-                document.getElementById("featured-image").innerHTML += `
-                    <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover absolute inset-0">
-                `;
+                document.getElementById("featured-image").innerHTML += `<img src="${post.image}" class="w-full h-full object-cover">`;
 
-                // Nội dung bài viết
-                document.getElementById("post-content").innerHTML = post.content;
+                const contentDiv = document.getElementById("post-content");
+                contentDiv.innerHTML = post.content;
 
-                // Kích hoạt highlight code sau khi chèn content
-                if (window.Prism) {
-                    Prism.highlightAll();
-                }
-            } else {
-                document.querySelector("article").innerHTML = `
-                    <div class="px-8 md:px-16 py-32 text-center">
-                        <h1 class="text-3xl font-bold text-slate-900 mb-4">Không tìm thấy bài viết</h1>
-                        <p class="text-slate-600 mb-8">Có vẻ như đường dẫn này không tồn tại hoặc đã bị xóa.</p>
-                        <a href="blog.html" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition">← Quay lại trang Blog</a>
-                    </div>
-                `;
+                // GENERATE TOC
+                const headings = contentDiv.querySelectorAll('h2, h3');
+                const toc = document.getElementById("toc");
+                headings.forEach((h, i) => {
+                    h.id = `heading-${i}`;
+                    const item = document.createElement('a');
+                    item.href = `#${h.id}`;
+                    item.className = `toc-item block text-sm font-bold text-slate-400 hover:text-primary transition-all ml-4 ${h.tagName === 'H3' ? 'ml-8 text-xs' : ''}`;
+                    item.innerText = h.innerText;
+                    toc.appendChild(item);
+                });
+
+                // COPY CODE BUTTONS
+                contentDiv.querySelectorAll('pre').forEach(pre => {
+                    const btn = document.createElement('button');
+                    btn.className = 'copy-btn';
+                    btn.innerText = 'COPY';
+                    btn.onclick = () => {
+                        navigator.clipboard.writeText(pre.innerText.replace('COPY', ''));
+                        btn.innerText = 'COPIED!';
+                        setTimeout(() => btn.innerText = 'COPY', 2000);
+                    };
+                    pre.appendChild(btn);
+                });
+
+                if (window.Prism) Prism.highlightAll();
+
+                // READING PROGRESS
+                window.onscroll = () => {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (winScroll / height) * 100;
+                    document.getElementById("reading-progress").style.width = scrolled + "%";
+                };
             }
         });
     </script>

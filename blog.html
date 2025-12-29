@@ -7,51 +7,129 @@
     <title>Blog - Góc Lập Trình</title>
     <meta name="description"
         content="Danh sách bài viết chia sẻ về Java, JavaScript, Security và kinh nghiệm lập trình.">
-    <meta property="og:title" content="Blog - Góc Lập Trình">
-    <meta property="og:description" content="Khám phá các bài viết mới nhất về công nghệ.">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { primary: '#4f46e5', secondary: '#1e293b' },
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: { primary: '#6366f1', secondary: '#4338ca', accent: '#818cf8', glass: 'rgba(255, 255, 255, 0.7)' },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
                 },
             },
         };
     </script>
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f8fafc;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .search-bar {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus-within {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .premium-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-pill {
+            transition: all 0.3s ease;
+        }
+
+        .category-pill.active {
+            background-color: #6366f1;
+            color: white;
+        }
+    </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+<body class="text-slate-900 font-sans antialiased overflow-x-hidden">
     <!-- HEADER -->
-    <header class="bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-primary">Góc Lập Trình</a>
-            <nav class="hidden sm:flex gap-6 text-sm font-medium text-slate-700">
-                <a href="index.html" class="hover:text-primary">Trang chủ</a>
-                <a href="blog.html" class="text-primary font-semibold">Bài viết</a>
-                <a href="about.html" class="hover:text-primary">Giới thiệu</a>
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Góc
+                Lập Trình</a>
+            <nav class="hidden md:flex gap-10 text-sm font-bold text-slate-600 uppercase tracking-widest">
+                <a href="index.html" class="hover:text-primary transition">Trang chủ</a>
+                <a href="blog.html"
+                    class="text-primary relative after:absolute after:-bottom-2 after:left-0 after:w-full after:h-0.5 after:bg-primary">Bài
+                    viết</a>
+                <a href="diary.html" class="hover:text-primary transition">Nhật ký</a>
+                <a href="about.html" class="hover:text-primary transition">Giới thiệu</a>
             </nav>
         </div>
     </header>
 
-    <!-- BLOG LIST -->
-    <section class="py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-extrabold text-slate-900 mb-10 text-center">Bài viết mới nhất</h1>
-            <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    <!-- MAIN -->
+    <main class="pt-40 pb-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Search & Filters -->
+            <div class="mb-20 space-y-8">
+                <div class="text-center">
+                    <h1 class="text-5xl font-black mb-6">Thư viện <span class="text-primary">Tri thức</span></h1>
+                    <p class="text-slate-500 text-lg">Tìm kiếm các bài viết về lập trình, an ninh mạng và hơn thế nữa.
+                    </p>
+                </div>
+
+                <div class="max-w-2xl mx-auto">
+                    <div class="search-bar flex items-center px-6 py-4 rounded-2xl">
+                        <svg class="w-6 h-6 text-slate-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..."
+                            class="w-full bg-transparent outline-none font-medium">
+                    </div>
+                </div>
+
+                <div id="category-filters" class="flex flex-wrap justify-center gap-3">
+                    <button
+                        class="category-pill active px-6 py-2 rounded-full border border-slate-200 text-sm font-bold text-slate-600 hover:border-primary transition-all"
+                        data-category="All">Tất cả</button>
+                    <!-- Categories will be injected here -->
+                </div>
+            </div>
+
+            <!-- BLOG LIST -->
+            <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+
+            <div id="no-results" class="hidden text-center py-20">
+                <p class="text-2xl font-bold text-slate-400">Không tìm thấy bài viết nào phù hợp. 😅</p>
+            </div>
         </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500">
-        © 2025 Góc Lập Trình. Thiết kế bởi Nguyễn Khánh Long.
+    <footer class="bg-white border-t border-slate-100 py-12 text-center text-slate-400 text-sm">
+        © 2025 Góc Lập Trình. Nâng cấp bởi Nguyễn Khánh Long.
     </footer>
 
     <!-- DỮ LIỆU DÙNG CHUNG -->
@@ -59,32 +137,82 @@
 
     <!-- SCRIPT RENDER -->
     <script>
+        let currentCategory = 'All';
+        let searchQuery = '';
+
         document.addEventListener("DOMContentLoaded", () => {
             const blogList = document.getElementById("blog-list");
+            const searchInput = document.getElementById("search-input");
+            const categoryContainer = document.getElementById("category-filters");
 
-            posts.forEach(post => {
-                const div = document.createElement("div");
-                div.className = "bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden";
-                div.innerHTML = `
-          <img src="${post.image}" alt="${post.title}" class="h-48 w-full object-cover">
-          <div class="p-5">
-            <div class="flex items-center gap-2 text-xs text-primary font-medium mb-2">
-              <span class="bg-indigo-50 px-2 py-1 rounded">${post.category}</span>
-              <span class="text-slate-400">•</span>
-              <span class="text-slate-500">${post.date}</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2 hover:text-primary cursor-pointer" onclick="openPost(${post.id})">${post.title}</h3>
-            <p class="text-slate-600 text-sm mb-4 line-clamp-2">${post.excerpt}</p>
-          </div>
-        `;
-                blogList.appendChild(div);
+            // Extract unique categories
+            const categories = ['All', ...new Set(posts.map(post => post.category))];
+
+            // Render category buttons
+            categoryContainer.innerHTML = categories.map(cat => `
+                <button class="category-pill ${cat === 'All' ? 'active' : ''} px-6 py-2 rounded-full border border-slate-200 text-sm font-bold text-slate-600 hover:border-primary transition-all" data-category="${cat}">
+                    ${cat === 'All' ? 'Tất cả' : cat}
+                </button>
+            `).join('');
+
+            function renderPosts() {
+                const filtered = posts.filter(post => {
+                    const matchesCategory = currentCategory === 'All' || post.category === currentCategory;
+                    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+                    return matchesCategory && matchesSearch;
+                });
+
+                if (filtered.length === 0) {
+                    blogList.innerHTML = '';
+                    document.getElementById("no-results").classList.remove("hidden");
+                } else {
+                    document.getElementById("no-results").classList.add("hidden");
+                    blogList.innerHTML = filtered.map(post => `
+                        <div class="premium-card rounded-[32px] p-4 group cursor-pointer" onclick="openPost(${post.id})">
+                            <div class="rounded-[24px] overflow-hidden mb-6 relative">
+                                <img src="${post.image}" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black text-primary shadow-sm uppercase">${post.category}</span>
+                                </div>
+                            </div>
+                            <div class="px-2 pb-2">
+                                <h3 class="text-xl font-black text-slate-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">${post.title}</h3>
+                                <p class="text-slate-500 text-sm mb-6 line-clamp-2">${post.excerpt}</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(post.author)}&background=6366f1&color=fff" class="w-6 h-6 rounded-full">
+                                        <span class="text-xs font-bold text-slate-400">${post.author}</span>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-slate-300 italic">${post.date}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Initial render
+            renderPosts();
+
+            // Search listener
+            searchInput.addEventListener("input", (e) => {
+                searchQuery = e.target.value;
+                renderPosts();
+            });
+
+            // Category listener
+            categoryContainer.addEventListener("click", (e) => {
+                if (e.target.classList.contains('category-pill')) {
+                    document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentCategory = e.target.dataset.category;
+                    renderPosts();
+                }
             });
         });
 
-        // Chuyển sang trang chi tiết bài viết
         function openPost(id) {
-            const selected = posts.find(p => p.id === id);
-            localStorage.setItem("selectedPost", JSON.stringify(selected));
             window.location.href = `detail_blog.html?id=${id}`;
         }
     </script>
