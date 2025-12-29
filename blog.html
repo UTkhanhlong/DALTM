@@ -5,6 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Blog - Góc Lập Trình</title>
+    <meta name="description"
+        content="Danh sách bài viết chia sẻ về Java, JavaScript, Security và kinh nghiệm lập trình.">
+    <meta property="og:title" content="Blog - Góc Lập Trình">
+    <meta property="og:description" content="Khám phá các bài viết mới nhất về công nghệ.">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -76,7 +85,7 @@
         function openPost(id) {
             const selected = posts.find(p => p.id === id);
             localStorage.setItem("selectedPost", JSON.stringify(selected));
-            window.location.href = "detail_blog.html";
+            window.location.href = `detail_blog.html?id=${id}`;
         }
     </script>
 </body>
